@@ -1,0 +1,23 @@
+SELECT company_name,
+CASE WHEN paid_time_off_days >=20 AND healthcare_benefits=1 THEN 'pto friendly with benefits'
+     WHEN paid_time_off_days >=15 AND healthcare_benefits=1 THEN 'pto acceptible with benefits'
+     WHEN paid_time_off_days >=15 AND healthcare_benefits=0 THEN 'pto acceptible no benefits'
+     ELSE 'abysmal'
+  END AS wellness_first_companies
+FROM fortune_companies;
+
+SELECT industry
+FROM fortune_companies
+GROUP BY industry
+HAVING AVG(maternity_leave_weeks)>=8
+ORDER BY AVG(maternity_leave_weeks) DESC;
+
+SELECT company_name
+FROM fortune_companies
+WHERE paid_time_off_days>20
+AND healthcare_benefits=1;
+
+SELECT industry, ROUND(AVG(revenue),1) as avg_revenue_billions
+FROM fortune_companies
+GROUP BY industry
+HAVING avg_revenue_billions>=200;
