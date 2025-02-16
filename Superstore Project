@@ -1,0 +1,18 @@
+--item by price
+SELECT *
+FROM superstore
+ORDER BY price ASC;
+
+--average price
+SELECT MAX(price)
+FROM superstore;
+
+--kitchen supplies
+SELECT SUM(price)
+FROM superstore
+WHERE category = 'Kitchen Supplies';
+
+--air purifiers in stock
+SELECT COUNT(stock_quantity)
+FROM superstore
+WHERE category = 'Air Purifier';
